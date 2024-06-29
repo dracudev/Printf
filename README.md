@@ -13,3 +13,10 @@ Custom implementation of the standard `printf` function, capable of formatting a
 | %x         | Print a number in hexadecimal (base 16), with lowercase.                                      |
 | %X         | Print a number in hexadecimal (base 16), with uppercase.                                      |
 | %%         | Print a percent sign.                                                                         |
+
+The `ft_printf` project involves implementing variadic functions. This exercise is designed to deepen understanding of:
+
+- Handling different data types and format specifiers.
+- Managing variable argument lists using the `stdarg.h` library.
+- Working with low-level input/output operations.
+- Enhancing knowledge of memory management and pointer manipulation.
