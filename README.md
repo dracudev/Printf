@@ -99,6 +99,22 @@ The `printf` function in C and related languages supports a variable number of a
 
 2. **Variable Arguments**:
    - After the format string, `printf` accepts a variable number of arguments corresponding to the conversion specifiers in the format string. These arguments can be of different types (integers, floats, strings, etc.) and their number can vary depending on the format specifiers.
+  
+**Variadic functions** in C are functions that can accept a variable number of arguments. This feature is particularly useful when the number of arguments needed by a function is not fixed.
+
+To define a variadic function, you need to include the `stdarg.h` header and use the following macros:
+
+1. `va_list`: A type to hold information about variable arguments.
+2. `va_start`: Initializes a `va_list` variable to retrieve the additional arguments.
+3. `va_arg`: Retrieves the next argument in the list.
+4. `va_copy`: duplicates a `va_list` variable, allowing you to traverse the arguments multiple times if needed. 
+5. `va_end`: Cleans up the `va_list` variable.
+
+```c
+#include <stdarg.h>
+
+return_type function_name(int fixed_arg, ...);
+```
 
 <br>
 
