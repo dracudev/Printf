@@ -142,28 +142,6 @@ The `printf` function in C and similar programming languages processes its forma
 
 <br>
 
-# Output Handling
-
-1. **Standard Output**:
-   - By default, `printf` sends its formatted output to the standard output stream (`stdout`). This is the console where users typically view output messages.
-
-2. **Format String and Specifiers**:
-   - The format string in `printf` specifies how the subsequent arguments should be formatted and inserted into the output stream. It contains ordinary characters and format specifiers (e.g., `%d`, `%f`, `%s`).
-   
-3. **Flow of Output**:
-    
-    - `printf` processes the format string and its specifiers to construct a formatted output string.
-    - Once the string is formatted, `printf` sends it to `stdout`.
-    - The operating system or runtime environment manages the actual display or storage of the output, depending on where `stdout` is directed (e.g., console, file, or redirected output).
-4. **Redirecting Output**:
-    
-    - Developers can redirect `printf` output to files or other output streams using standard I/O functions like `freopen()` or shell redirection (`>`, `>>`).
-5. **Efficiency and Buffering**:
-    
-    - `printf` typically buffers output for efficiency, meaning it may not immediately display output to the console. Buffering helps minimize overhead by collecting output and sending it in larger chunks.
-  
-<br>
-
 # Error Handling
 1. **Format String Validity**:
    - The format string passed to `printf` must be well-formed with correct format specifiers. Incorrect usage of format specifiers or mismatched arguments can lead to undefined behavior or runtime errors.
@@ -183,3 +161,9 @@ The `printf` function in C and similar programming languages processes its forma
    - Developers can prevent errors by carefully matching format specifiers with the types of arguments.
    - Compiler warnings (e.g., `-Wall` in GCC) can help catch some format string errors at compile-time.
    - Debugging tools and techniques (e.g., runtime checks, logging) can assist in identifying format string issues during program execution.
+
+<br>
+
+# Custom Implementation
+
+[In process]
