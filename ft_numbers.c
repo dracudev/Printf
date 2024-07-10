@@ -35,7 +35,7 @@ void	ft_putnbr(int nbr, int *len)
 
 void	ft_unsigned_int(unsigned int u, int *len)
 {
-	if (u >= 10)
+	if (u > 9)
 		ft_unsigned_int(u / 10, len);
 	ft_putchar((u % 10) + '0', len);
 }
