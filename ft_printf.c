@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:45:46 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/04 18:15:31 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/10 12:34:52 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static void	ft_check_conv(char c, va_list *args, int *len, int *i)
 {
 	if (c == 'c')
-		ft_putchar_len(va_arg(*args, int), len);
+		ft_putchar(va_arg(*args, int), len);
 	else if (c == 's')
-		ft_string(va_arg(*args, char *), len);
-	else if (c == 'p')
+		ft_putstr(va_arg(*args, char *), len);
+	/*else if (c == 'p')
 		ft_pointer(va_arg(*args, size_t), len);
 	else if (c == 'd' || c == 'i')
 		ft_number(va_arg(*args, int), len);
@@ -27,9 +27,9 @@ static void	ft_check_conv(char c, va_list *args, int *len, int *i)
 	else if (c == 'x')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'x');
 	else if (c == 'X')
-		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');
+		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');*/
 	else if (c == '%')
-		ft_putchar_len('%', len);
+		ft_putchar('%', len);
 	else
 		(*i)--;
 }
@@ -53,7 +53,7 @@ int	ft_printf(char const *str, ...)
 		}
 		else
 		{
-			ft_putchar_len((char)str[i], &len);
+			ft_putchar((char)str[i], &len);
 			i++;
 		}
 	}
