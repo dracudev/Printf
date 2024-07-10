@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester.c                                           :+:      :+:    :+:   */
+/*   ft_numbers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 12:09:45 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/10 13:40:58 by antandre         ###   ########.fr       */
+/*   Created: 2024/07/10 13:14:50 by antandre          #+#    #+#             */
+/*   Updated: 2024/07/10 13:32:56 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	main(void)
+void	ft_putnbr(int nbr, int *len)
 {
-	char	ch;
-	char	*str;
-	int	i;
-	int	d;
-	unsigned int u;
+	if (nbr == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		(*len) += 11;
+		return ;
+	}
+	if (nbr < 0)
+	{
+		ft_putchar('-', len);
+		ft_putnbr(nbr * -1, len);
+	}
+	else
+	{
+		if (nbr > 9)
+			ft_putnbr(nbr / 10, len);
+		ft_putchar((nbr % 10) + '0', len);
+	}
+}
 
-
-	ch = 'A';
-	str = "Hello, world!";
-	i = -42;
-	d = -42;
-	u = 42;
-	ft_printf("%c %s", ch, str);
-	ft_printf("%i %d %u", i, d, u);
-	printf("%i %d %u", i, d, u);
+void	ft_unsigned_int(unsigned int u, int *len)
+{
+	if (u >= 10)
+		ft_unsigned_int(u / 10, len);
+	ft_putchar((u % 10) + '0', len);
 }

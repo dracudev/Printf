@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:45:46 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/10 12:34:52 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:33:39 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static void	ft_check_conv(char c, va_list *args, int *len, int *i)
 	else if (c == 's')
 		ft_putstr(va_arg(*args, char *), len);
 	/*else if (c == 'p')
-		ft_pointer(va_arg(*args, size_t), len);
+		ft_pointer(va_arg(*args, size_t), len);*/
 	else if (c == 'd' || c == 'i')
-		ft_number(va_arg(*args, int), len);
+		ft_putnbr(va_arg(*args, int), len);
 	else if (c == 'u')
 		ft_unsigned_int(va_arg(*args, int), len);
-	else if (c == 'x')
+	/*else if (c == 'x')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'x');
 	else if (c == 'X')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');*/

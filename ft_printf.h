@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:07:43 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/10 12:06:57 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:34:51 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 void			ft_putchar(char ch, int *len);
 void			ft_putstr(char *args, int *len);
 
-void			ft_number(int number, int *len);
+void			ft_putnbr(int nbr, int *len);
 void			ft_hexadecimal(unsigned int x, int *len, char x_or_x);
 void			ft_unsigned_int(unsigned int u, int *len);
 void			ft_pointer(size_t pointer, int *len);
