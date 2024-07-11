@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:14:50 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/10 13:32:56 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:03:19 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,55 @@ void	ft_unsigned_int(unsigned int u, int *len)
 	if (u > 9)
 		ft_unsigned_int(u / 10, len);
 	ft_putchar((u % 10) + '0', len);
+}
+
+void	ft_pointer(size_t ptr, int *len)
+{
+	char	str[25];
+	int		i;
+	char	*base;
+
+	base = "0123456789abcdef";
+	i = 0;
+	write(1, "0x", 2);
+	(*len) += 2;
+	if (ptr == 0)
+	{
+		ft_putchar('0', len);
+		return ;
+	}
+	while (ptr != 0)
+	{
+		str[i] = base[ptr % 16];
+		ptr = ptr / 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar(str[i], len);
+}
+
+void	ft_hexadecimal(unsigned int x, int *len, char x_X)
+{
+	char	str[25];
+	char	*base;
+	int		i;
+
+	if (x_X == 'X')
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	i = 0;
+	if (x == 0)
+	{
+		ft_putchar('0', len);
+		return ;
+	}
+	while (x != 0)
+	{
+		str[i] = base[x % 16];
+		x = x / 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar(str[i], len);
 }
