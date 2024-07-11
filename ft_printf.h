@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:07:43 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/10 13:34:51 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:24:01 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
 

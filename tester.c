@@ -6,14 +6,15 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:09:45 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/11 13:00:04 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:06:30 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-int main() {
+int main(void) 
+{
     // Testing %c
     char c = 'A';
     printf("Testing %%c:\n");
@@ -67,5 +68,5 @@ int main() {
     printf("printf:    [%%]\n");
     ft_printf("ft_printf: [%%]\n\n");
 
-    return 0;
+    return (0);
 }
