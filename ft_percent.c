@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:45:46 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/12 11:06:18 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:03:02 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,29 @@ static void	ft_check_conv(char c, va_list *args, int *len, int *i)
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'x');
 	else if (c == 'X')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');
-	else if (c == '%')
-		ft_putchar('%', len);
 	else
 		(*i)--;
+}
+
+static int	ft_percent(char const *str, int i, va_list *args, int *len)
+{
+	if (str[i + 1] == '\0')
+		ft_putchar('%', len);
+	else if (str[i + 1] == '%')
+	{
+		ft_putchar('%', len);
+		i++;
+	}
+	else if (str[i + 1] != '\0' && (str[i + 1] == 'c' || str[i + 1] == 's'
+			|| str[i + 1] == 'p' || str[i + 1] == 'd' || str[i + 1] == 'i'
+			|| str[i + 1] == 'u' || str[i + 1] == 'x' || str[i + 1] == 'X'))
+	{
+		i++;
+		ft_check_conv(str[i], args, len, &i);
+	}
+	else
+		ft_putchar('%', len);
+	return (i);
 }
 
 int	ft_printf(char const *str, ...)
@@ -46,16 +65,10 @@ int	ft_printf(char const *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-		{
-			i++;
-			ft_check_conv(str[i], &args, &len, &i);
-			i++;
-		}
+			i = ft_percent(str, i, &args, &len);
 		else
-		{
 			ft_putchar((char)str[i], &len);
-			i++;
-		}
+		i++;
 	}
 	va_end(args);
 	return (len);

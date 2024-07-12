@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:09:45 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/11 13:06:30 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/11 14:51:47 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,20 @@ int main(void)
 
     // Testing %s
     char *str = "Hello, World!";
+    char *null = NULL;
     printf("Testing %%s:\n");
     printf("printf:    [%s]\n", str);
     ft_printf("ft_printf: [%s]\n\n", str);
+    printf("printf: [%s]\n", null);
+    ft_printf("ft_printf: [%s]\n\n", null);
 
     // Testing %p
     void *ptr = str;
     printf("Testing %%p:\n");
     printf("printf:    [%p]\n", ptr);
     ft_printf("ft_printf: [%p]\n\n", ptr);
+    printf("printf: [%p] [%p]\n", 0, 0);
+    ft_printf("ft_printf: [%p] [%p]\n\n", 0, 0);
 
     // Testing %d
     int d = 42;
@@ -67,6 +72,12 @@ int main(void)
     printf("Testing %%%%:\n");
     printf("printf:    [%%]\n");
     ft_printf("ft_printf: [%%]\n\n");
+    /*printf("printf: [%]\n");
+    ft_printf("ft_printf: [%]\n");
+    printf("printf: [%%%]\n");
+    ft_printf("ft_printf: [%%%]\n");
+    printf("printf: [w%w%w%w]\n");
+    ft_printf("ft_printf: [w%w%w%w]\n\n");*/
 
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:14:50 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/11 13:03:19 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/12 11:07:12 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,16 @@ void	ft_pointer(size_t ptr, int *len)
 	int		i;
 	char	*base;
 
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		(*len) += 5;
+		return ;
+	}
 	base = "0123456789abcdef";
 	i = 0;
 	write(1, "0x", 2);
 	(*len) += 2;
-	if (ptr == 0)
-	{
-		ft_putchar('0', len);
-		return ;
-	}
 	while (ptr != 0)
 	{
 		str[i] = base[ptr % 16];
