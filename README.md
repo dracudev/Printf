@@ -4,8 +4,8 @@ Custom implementation of the standard `printf` function, capable of formatting a
 
 | Conversion | Short Description                                                                             |
 |------------|-----------------------------------------------------------------------------------------------|
-| %c         | Print a single character.                                                                     |
-| %s         | Print a string of characters.                                                                 |
+| [%c](#ftputchar)         | Print a single character.                                                                     |
+| [%s](#ftputstr)         | Print a string of characters.                                                                 |
 | %p         | The void * pointer argument is printed in hexadecimal.                                        |
 | %d         | Print a decimal (base 10) number.                                                             |
 | %i         | Print an integer in base 10.                                                                  |
