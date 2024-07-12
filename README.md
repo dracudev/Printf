@@ -19,7 +19,6 @@ The `ft_printf` project involves implementing variadic functions. This exercise 
 - Handling different data types and format specifiers.
 - Managing variable argument lists using the `stdarg.h` library.
 - Working with low-level input/output operations.
-- Enhancing knowledge of memory management and pointer manipulation.
 
 <br>
 
@@ -143,21 +142,16 @@ The `printf` function in C and similar programming languages processes its forma
 <br>
 
 # Error Handling
-1. **Format String Validity**:
-   - The format string passed to `printf` must be well-formed with correct format specifiers. Incorrect usage of format specifiers or mismatched arguments can lead to undefined behavior or runtime errors.
 
-2. **Undefined Behavior**:
+1. **Undefined Behavior**:
    - If the format string specifies a format that does not match the type of subsequent arguments (e.g., using `%d` but passing a floating-point number), the behavior of `printf` is undefined. This can result in unexpected output or crashes.
 
-3. **No Return Value for Errors**:
+2. **No Return Value for Errors**:
    - `printf` itself does not return an error code to indicate formatting errors. It typically returns the number of characters printed (excluding the null terminator), or a negative value if an error occurs during output.
+   - When a char pointer (char *) is NULL and is used with the `%s` specifier, printf typically prints `(null)`.
+   - When a pointer (for example, void *) is NULL and is used with the `%p` specifier, printf typically prints `(nil)`.
 
-4. **Common Issues**:
-   - Forgetting to provide enough arguments for all format specifiers in the format string (`printf("Number: %d\n", 42);` expects an integer after `%d`).
-   - Mixing up format specifiers (`printf("Float: %f\n", 42);` should use `%d` for integers).
-   - Using incorrect format specifiers for the types of arguments (`printf("String: %s\n", 42);` attempts to print an integer as a string).
-
-5. **Prevention and Debugging**:
+3. **Prevention and Debugging**:
    - Developers can prevent errors by carefully matching format specifiers with the types of arguments.
    - Compiler warnings (e.g., `-Wall` in GCC) can help catch some format string errors at compile-time.
    - Debugging tools and techniques (e.g., runtime checks, logging) can assist in identifying format string issues during program execution.
