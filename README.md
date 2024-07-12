@@ -58,6 +58,8 @@ int main() {
 
 # Components of a Format Specifier
 
+**`[Not implemented]`**
+
 A format specifier can have several components, including:
 
 1. **Flags**: Optional characters that modify the output format. Common flags include:
@@ -309,17 +311,6 @@ void	ft_putchar(char ch, int *len)
 
 The `ft_putstr` function is a helper function used to print a string to the standard output and update the total length of the output.
 
-**Parameters**:
-- `char *args`: The string to be printed.
-- `int *len`: A pointer to an integer that tracks the total length of the formatted output.
-
-**Functionality**:
-- Checks if the string `args` is `NULL`.
-  - If `args` is `NULL`, prints `(null)` to the standard output and increments `len` by 6.
-- If `args` is not `NULL`, iterates through each character in the string:
-  - Calls `ft_putchar` to print each character.
-  - Increments `len` for each character printed.
-
 ```c
 void	ft_putstr(char *args, int *len)
 {
@@ -339,6 +330,19 @@ void	ft_putstr(char *args, int *len)
 	}
 }
 ```
+
+**Parameters**:
+- `char *args`: The string to be printed.
+- `int *len`: A pointer to an integer that tracks the total length of the formatted output.
+
+**Functionality**:
+- Checks if the string `args` is `NULL`.
+  - If `args` is `NULL`, prints `(null)` to the standard output and increments `len` by 6.
+- If `args` is not `NULL`, iterates through each character in the string:
+  - Calls `ft_putchar` to print each character.
+  - Increments `len` for each character printed.
+
+<br>
 
 ## Ft_numbers.c
 
