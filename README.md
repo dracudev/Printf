@@ -4,15 +4,15 @@ Custom implementation of the standard `printf` function, capable of formatting a
 
 | Conversion | Short Description                                                                             |
 |------------|-----------------------------------------------------------------------------------------------|
-| [%c](#ft_putchar)         | Print a single character.                                                                     |
-| [%s](#ft_putstr)         | Print a string of characters.                                                                 |
-| [%p](#ft_pointer)         | The void * pointer argument is printed in hexadecimal.                                        |
-| [%d](#ft_putnbr)         | Print a decimal (base 10) number.                                                             |
-| [%i](#ft_putnbr)         | Print an integer in base 10.                                                                  |
-| [%u](#ft_unsigned_int)        | Print an unsigned decimal (base 10) number.                                                   |
-| [%x](#ft_hexadecimal)         | Print a number in hexadecimal (base 16), with lowercase.                                      |
-| [%X](#ft_hexadecimal)         | Print a number in hexadecimal (base 16), with uppercase.                                      |
-| [%%](#ft_putchar)         | Print a percent sign.                                                                         |
+| [%c](#ft_putchar)| Print a single character.                                                                     |
+| [%s](#ft_putstr)| Print a string of characters.                                                                 |
+| [%p](#ft_pointer)| The void * pointer argument is printed in hexadecimal.                                        |
+| [%d](#ft_putnbr)| Print a decimal (base 10) number.                                                             |
+| [%i](#ft_putnbr)| Print an integer in base 10.                                                                  |
+| [%u](#ft_unsigned_int)| Print an unsigned decimal (base 10) number.                                                   |
+| [%x](#ft_hexadecimal)| Print a number in hexadecimal (base 16), with lowercase.                                      |
+| [%X](#ft_hexadecimal)| Print a number in hexadecimal (base 16), with uppercase.                                      |
+| [%%](#ft_putchar)| Print a percent sign.                                                                         |
 
 The `ft_printf` project involves implementing variadic functions. This exercise is designed to deepen understanding of:
 
