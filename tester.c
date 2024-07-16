@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:09:45 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/16 11:03:34 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:23:41 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int main(void)
     char *str = "Hello, World!";
     char *null = NULL;
     printf("Testing %%s:\n");
-    printf("printf:    [%s]\n", str);
-    ft_printf("ft_printf: [%s]\n\n", str);
+    printf(": %d \n", printf("printf:    [%s]", str));
+    printf(": %d \n\n", ft_printf("ft_printf: [%s]", str));
     printf("printf: [%s]\n", null);
     ft_printf("ft_printf: [%s]\n\n", null);
 
