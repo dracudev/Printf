@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:09:45 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/11 14:51:47 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/16 11:03:34 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ int main(void)
 
     // Testing %p
     void *ptr = str;
+	void *nil = 0;
     printf("Testing %%p:\n");
     printf("printf:    [%p]\n", ptr);
     ft_printf("ft_printf: [%p]\n\n", ptr);
-    printf("printf: [%p] [%p]\n", 0, 0);
-    ft_printf("ft_printf: [%p] [%p]\n\n", 0, 0);
+    printf("printf: [%p] [%p]\n", nil, nil);
+		ft_printf("ft_printf: [%p] [%p]\n\n", nil, nil);
 
     // Testing %d
     int d = 42;
