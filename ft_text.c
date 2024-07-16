@@ -6,32 +6,37 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:30:27 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/10 12:36:17 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/16 17:45:14 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char ch, int *len)
+int	ft_putchar(char ch, int *len)
 {
-	write(1, &ch, 1);
+	if (write(1, &ch, 1) == -1)
+		return (-1);
 	(*len)++;
+	return (0);
 }
 
-void	ft_putstr(char *args, int *len)
+int	ft_putstr(char *args, int *len)
 {
 	size_t	i;
 
 	i = 0;
 	if (!args)
 	{
-		write(1, "(null)", 6);
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
 		(*len) += 6;
-		return ;
+		return (0);
 	}
 	while (args[i])
 	{
-		ft_putchar(args[i], len);
+		if (ft_putchar(args[i], len) == -1)
+			return (-1);
 		i++;
 	}
+	return (0);
 }
