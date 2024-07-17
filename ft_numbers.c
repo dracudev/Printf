@@ -6,7 +6,7 @@
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:14:50 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/16 18:26:40 by antandre         ###   ########.fr       */
+/*   Updated: 2024/07/17 10:47:36 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	ft_unsigned_int(unsigned int u, int *len)
 
 int	ft_pointer(size_t ptr, int *len)
 {
-	char	str[25];
-	int		i;
 	char	*base;
 
 	if (!ptr)
@@ -60,20 +58,19 @@ int	ft_pointer(size_t ptr, int *len)
 		return (0);
 	}
 	base = "0123456789abcdef";
-	i = 0;
-	if (write(1, "0x", 2) == -1)
-		return (-1);
-	(*len) += 2;
-	while (ptr != 0)
+	if (ptr < 16)
 	{
-		str[i++] = base[ptr % 16];
-		ptr = ptr / 16;
+		if (write(1, "0x", 2) == -1)
+			return (-1);
+		(*len) += 2;
 	}
-	while (i--)
+	if (ptr >= 16)
 	{
-		if (ft_putchar(str[i], len) == -1)
+		if (ft_pointer(ptr / 16, len) == -1)
 			return (-1);
 	}
+	if (ft_putchar(base[ptr % 16], len) == -1)
+		return (-1);
 	return (0);
 }
 
@@ -85,26 +82,12 @@ int	ft_hexadecimal(unsigned int x, int *len, char x_X)
 		base = "0123456789ABCDEF";
 	else
 		base = "0123456789abcdef";
-	/*i = 0;
-	if (x == 0)
-	{
-		if (ft_putchar('0', len) == -1)
-			return (-1);
-		return (0);
-	}
-	while (x != 0)
-	{
-		str[i++] = base[x % 16];
-		x = x / 16;
-	}
-	while (i--)
-	{
-		if (ft_putchar(str[i], len) == -1)
-			return (-1);
-	}*/
 	if (x >= 16)
-		if (ft_hexadecimal(x/16, len, x_X) == -1)
+	{
+		if (ft_hexadecimal(x / 16, len, x_X) == -1)
 			return (-1);
-	ft_putchar(base[x % 16], len);
+	}
+	if (ft_putchar(base[x % 16], len) == -1)
+		return (-1);
 	return (0);
 }

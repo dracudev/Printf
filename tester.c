@@ -1,84 +1,78 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester.c                                           :+:      :+:    :+:   */
+/*   tester2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antandre <antandre@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 12:09:45 by antandre          #+#    #+#             */
-/*   Updated: 2024/07/16 18:23:41 by antandre         ###   ########.fr       */
+/*   Created: 2024/07/17 10:53:20 by antandre          #+#    #+#             */
+/*   Updated: 2024/07/17 11:28:40 by antandre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-int main(void) 
-{
-    // Testing %c
+int main() {
     char c = 'A';
-    printf("Testing %%c:\n");
-    printf("printf:    [%c]\n", c);
-    ft_printf("ft_printf: [%c]\n\n", c);
-
-    // Testing %s
     char *str = "Hello, World!";
     char *null = NULL;
+    void *ptr = str;
+    void *nil = 0;
+    int d = 42;
+    int i = -42;
+    unsigned int u = 3000000000;
+    unsigned int x = 255;
+    unsigned int X = 255;
+
+    // Testing %c
+    printf("Testing %%c:\n");
+    printf(": %d \n\n", printf("Printf: [%c]\n", c));
+    printf(": %d \n\n", ft_printf("printf: [%c]\n", c));
+
+    // Testing %s
     printf("Testing %%s:\n");
-    printf(": %d \n", printf("printf:    [%s]", str));
-    printf(": %d \n\n", ft_printf("ft_printf: [%s]", str));
-    printf("printf: [%s]\n", null);
-    ft_printf("ft_printf: [%s]\n\n", null);
+    printf(": %d \n\n", printf("Printf: [%s]\n", str));
+    printf(": %d \n\n", ft_printf("printf: [%s]\n", str));
+    printf(": %d \n\n", printf("Printf: [%s]\n", null));
+    printf(": %d \n\n", ft_printf("printf: [%s]\n", null));
 
     // Testing %p
-    void *ptr = str;
-	void *nil = 0;
     printf("Testing %%p:\n");
-    printf("printf:    [%p]\n", ptr);
-    ft_printf("ft_printf: [%p]\n\n", ptr);
-    printf("printf: [%p] [%p]\n", nil, nil);
-		ft_printf("ft_printf: [%p] [%p]\n\n", nil, nil);
+    printf(": %d \n\n", printf("Printf: [%p]\n", ptr));
+    printf(": %d \n\n", ft_printf("printf: [%p]\n", ptr));
+    printf(": %d \n\n", printf("Printf: [%p] [%p]\n", nil, nil));
+    printf(": %d \n\n", ft_printf("printf: [%p] [%p]\n", nil, nil));
 
     // Testing %d
-    int d = 42;
     printf("Testing %%d:\n");
-    printf("printf:    [%d]\n", d);
-    ft_printf("ft_printf: [%d]\n\n", d);
+    printf(": %d \n\n", printf("Printf: [%d]\n", d));
+    printf(": %d \n\n", ft_printf("printf: [%d]\n", d));
 
     // Testing %i
-    int i = -42;
     printf("Testing %%i:\n");
-    printf("printf:    [%i]\n", i);
-    ft_printf("ft_printf: [%i]\n\n", i);
+    printf(": %d \n\n", printf("Printf: [%i]\n", i));
+    printf(": %d \n\n", ft_printf("printf: [%i]\n", i));
 
     // Testing %u
-    unsigned int u = 3000000000;
     printf("Testing %%u:\n");
-    printf("printf:    [%u]\n", u);
-    ft_printf("ft_printf: [%u]\n\n", u);
+    printf(": %d \n\n", printf("Printf: [%u]\n", u));
+    printf(": %d \n\n", ft_printf("printf: [%u]\n", u));
 
     // Testing %x
-    unsigned int x = 255;
     printf("Testing %%x:\n");
-    printf("printf:    [%x]\n", x);
-    ft_printf("ft_printf: [%x]\n\n", x);
+    printf(": %d \n\n", printf("Printf: [%x]\n", x));
+    printf(": %d \n\n", ft_printf("printf: [%x]\n", x));
 
     // Testing %X
-    unsigned int X = 255;
     printf("Testing %%X:\n");
-    printf("printf:    [%X]\n", X);
-    ft_printf("ft_printf: [%X]\n\n", X);
+    printf(": %d \n\n", printf("Printf: [%X]\n", X));
+    printf(": %d \n\n", ft_printf("printf: [%X]\n", X));
 
     // Testing %%
     printf("Testing %%%%:\n");
-    printf("printf:    [%%]\n");
-    ft_printf("ft_printf: [%%]\n\n");
-    /*printf("printf: [%]\n");
-    ft_printf("ft_printf: [%]\n");
-    printf("printf: [%%%]\n");
-    ft_printf("ft_printf: [%%%]\n");
-    printf("printf: [w%w%w%w]\n");
-    ft_printf("ft_printf: [w%w%w%w]\n\n");*/
+    printf(": %d \n\n", printf("Printf: [%%]\n"));
+    printf(": %d \n\n", ft_printf("printf: [%%]\n"));
 
     return (0);
 }
