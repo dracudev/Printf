@@ -162,6 +162,8 @@ The `printf` function in C and similar programming languages processes its forma
 
 # Custom Implementation
 
+**`[All functions have write protection]`**
+
 ## Ft_printf.c
 
 ### [ft_check_conv](ft_printf.c)
@@ -169,26 +171,32 @@ The `printf` function in C and similar programming languages processes its forma
 The `ft_check_conv` function determines the appropriate action based on the format specifier character `c`. It uses the `va_list` to retrieve the corresponding argument and processes it accordingly, updating the total length of the output.
 
 ```c
-static void	ft_check_conv(char c, va_list *args, int *len, int *i)
+static int	ft_check_conv(char c, va_list *args, int *len, int *i)
 {
+	int	res;
+
+	res = 0;
 	if (c == 'c')
-		ft_putchar(va_arg(*args, int), len);
+		res = ft_putchar(va_arg(*args, int), len);
 	else if (c == 's')
-		ft_putstr(va_arg(*args, char *), len);
+		res = ft_putstr(va_arg(*args, char *), len);
 	else if (c == 'p')
-		ft_pointer(va_arg(*args, size_t), len);
+		res = ft_pointer(va_arg(*args, size_t), len);
 	else if (c == 'd' || c == 'i')
-		ft_putnbr(va_arg(*args, int), len);
+		res = ft_putnbr(va_arg(*args, int), len);
 	else if (c == 'u')
-		ft_unsigned_int(va_arg(*args, int), len);
+		res = ft_unsigned_int(va_arg(*args, int), len);
 	else if (c == 'x')
-		ft_hexadecimal(va_arg(*args, unsigned int), len, 'x');
+		res = ft_hexadecimal(va_arg(*args, unsigned int), len, 'x');
 	else if (c == 'X')
-		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');
+		res = ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');
 	else if (c == '%')
-		ft_putchar('%', len);
+		res = ft_putchar('%', len);
 	else
 		(*i)--;
+	if (res == -1)
+		return (-1);
+	return (0);
 }
 ```
 
@@ -231,12 +239,14 @@ int	ft_printf(char const *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			ft_check_conv(str[i], &args, &len, &i);
+			if (ft_check_conv(str[i], &args, &len, &i) == -1)
+				return (-1);
 			i++;
 		}
 		else
 		{
-			ft_putchar((char)str[i], &len);
+			if (ft_putchar((char)str[i], &len) == -1)
+				return (-1);
 			i++;
 		}
 	}
@@ -290,10 +300,12 @@ Specific functions to make the correct text conversions.
 The `ft_putchar` function is a helper function used to print a single character to the standard output and update the total length of the output.
 
 ```c
-void	ft_putchar(char ch, int *len)
+int	ft_putchar(char ch, int *len)
 {
-	write(1, &ch, 1);
+	if (write(1, &ch, 1) == -1)
+		return (-1);
 	(*len)++;
+	return (0);
 }
 ```
 
@@ -312,22 +324,25 @@ void	ft_putchar(char ch, int *len)
 The `ft_putstr` function is a helper function used to print a string to the standard output and update the total length of the output.
 
 ```c
-void	ft_putstr(char *args, int *len)
+int	ft_putstr(char *args, int *len)
 {
 	size_t	i;
 
 	i = 0;
 	if (!args)
 	{
-		write(1, "(null)", 6);
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
 		(*len) += 6;
-		return ;
+		return (0);
 	}
 	while (args[i])
 	{
-		ft_putchar(args[i], len);
+		if (ft_putchar(args[i], len) == -1)
+			return (-1);
 		i++;
 	}
+	return (0);
 }
 ```
 
@@ -352,25 +367,28 @@ Specific functions to make the correct number conversions.
 The `ft_putnbr` function is a helper function used to print an integer to the standard output and update the total length of the output.
 
 ```c
-void	ft_putnbr(int nbr, int *len)
+int	ft_putnbr(int nbr, int *len)
 {
+	int	res;
+
 	if (nbr == -2147483648)
 	{
-		write(1, "-2147483648", 11);
+		res = write(1, "-2147483648", 11);
 		(*len) += 11;
-		return ;
+		return (res);
 	}
 	if (nbr < 0)
 	{
-		ft_putchar('-', len);
-		ft_putnbr(nbr * -1, len);
+		res = ft_putchar('-', len);
+		res = ft_putnbr(nbr * -1, len);
 	}
 	else
 	{
 		if (nbr > 9)
-			ft_putnbr(nbr / 10, len);
-		ft_putchar((nbr % 10) + '0', len);
+			res = ft_putnbr(nbr / 10, len);
+		res = ft_putchar((nbr % 10) + '0', len);
 	}
+	return (res);
 }
 ```
 
@@ -394,11 +412,14 @@ void	ft_putnbr(int nbr, int *len)
 The `ft_unsigned_int` function is a helper function used to print an unsigned integer to the standard output and update the total length of the output.
 
 ```c
-void	ft_unsigned_int(unsigned int u, int *len)
+int	ft_unsigned_int(unsigned int u, int *len)
 {
 	if (u > 9)
-		ft_unsigned_int(u / 10, len);
-	ft_putchar((u % 10) + '0', len);
+		if (ft_unsigned_int(u / 10, len) == -1)
+			return (-1);
+	if (ft_putchar((u % 10) + '0', len) == -1)
+		return (-1);
+	return (0);
 }
 ```
 
@@ -417,30 +438,32 @@ void	ft_unsigned_int(unsigned int u, int *len)
 The `ft_pointer` function is a helper function used to print a pointer address in hexadecimal format to the standard output and update the total length of the output.
 
 ```c
-void	ft_pointer(size_t ptr, int *len)
+int	ft_pointer(size_t ptr, int *len)
 {
-	char	str[25];
-	int		i;
 	char	*base;
 
 	if (!ptr)
 	{
-		write(1, "(nil)", 5);
+		if (write(1, "(nil)", 5) == -1)
+			return (-1);
 		(*len) += 5;
-		return ;
+		return (0);
 	}
 	base = "0123456789abcdef";
-	i = 0;
-	write(1, "0x", 2);
-	(*len) += 2;
-	while (ptr != 0)
+	if (ptr < 16)
 	{
-		str[i] = base[ptr % 16];
-		ptr = ptr / 16;
-		i++;
+		if (write(1, "0x", 2) == -1)
+			return (-1);
+		(*len) += 2;
 	}
-	while (i--)
-		ft_putchar(str[i], len);
+	if (ptr >= 16)
+	{
+		if (ft_pointer(ptr / 16, len) == -1)
+			return (-1);
+	}
+	if (ft_putchar(base[ptr % 16], len) == -1)
+		return (-1);
+	return (0);
 }
 ```
 
@@ -453,8 +476,8 @@ void	ft_pointer(size_t ptr, int *len)
   - If true, prints `"(nil)"` to the standard output and increments `len` by 5.
 - Initializes a string `base` with hexadecimal digits (`"0123456789abcdef"`).
 - Writes `"0x"` to the standard output to indicate the start of a hexadecimal address and increments `len` by 2.
-- Converts `ptr` to hexadecimal representation by repeatedly dividing it by 16 and storing the remainder (`ptr % 16`) in `str`.
-- Uses `ft_putchar` to print each hexadecimal digit stored in `str` in reverse order.
+- Converts `ptr` to hexadecimal representation by recursively dividing it by 16 (`ptr / 16`).
+- Uses `ft_putchar` to print each hexadecimal digit (`base[ptr % 16]`).
 
 <br>
 
@@ -463,30 +486,22 @@ void	ft_pointer(size_t ptr, int *len)
 The `ft_hexadecimal` function is a helper function used to print an unsigned integer in hexadecimal format to the standard output and update the total length of the output.
 
 ```c
-void	ft_hexadecimal(unsigned int x, int *len, char x_X)
+int	ft_hexadecimal(unsigned int x, int *len, char x_X)
 {
-	char	str[25];
 	char	*base;
-	int		i;
 
 	if (x_X == 'X')
 		base = "0123456789ABCDEF";
 	else
 		base = "0123456789abcdef";
-	i = 0;
-	if (x == 0)
+	if (x >= 16)
 	{
-		ft_putchar('0', len);
-		return ;
+		if (ft_hexadecimal(x / 16, len, x_X) == -1)
+			return (-1);
 	}
-	while (x != 0)
-	{
-		str[i] = base[x % 16];
-		x = x / 16;
-		i++;
-	}
-	while (i--)
-		ft_putchar(str[i], len);
+	if (ft_putchar(base[x % 16], len) == -1)
+		return (-1);
+	return (0);
 }
 ```
 
@@ -500,5 +515,5 @@ void	ft_hexadecimal(unsigned int x, int *len, char x_X)
   - If `x_X` is `'X'`, uses `"0123456789ABCDEF"` (uppercase).
   - If `x_X` is `'x'` or any other character, uses `"0123456789abcdef"` (lowercase).
 - Handles the special case where `x` is `0` by printing `'0'` and returning early.
-- Converts `x` to hexadecimal representation by repeatedly dividing it by 16 (`x % 16`) and storing the remainder in `str`.
-- Uses `ft_putchar` to print each hexadecimal digit stored in `str` in reverse order.
+- Converts `x` to hexadecimal representation by recursively dividing it by 16 (`x / 16`).
+- Uses `ft_putchar` to print each hexadecimal digit (`base[x % 16]`)
