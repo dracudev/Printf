@@ -476,7 +476,7 @@ int	ft_pointer(size_t ptr, int *len)
   - If true, prints `"(nil)"` to the standard output and increments `len` by 5.
 - Initializes a string `base` with hexadecimal digits (`"0123456789abcdef"`).
 - Writes `"0x"` to the standard output to indicate the start of a hexadecimal address and increments `len` by 2.
-- Converts `ptr` to hexadecimal representation by recursively dividing it by 16.
+- Converts `ptr` to hexadecimal representation by recursively dividing it by 16 (`ptr / 16`).
 - Uses `ft_putchar` to print each hexadecimal digit (`base[ptr % 16]`).
 
 <br>
@@ -515,5 +515,5 @@ int	ft_hexadecimal(unsigned int x, int *len, char x_X)
   - If `x_X` is `'X'`, uses `"0123456789ABCDEF"` (uppercase).
   - If `x_X` is `'x'` or any other character, uses `"0123456789abcdef"` (lowercase).
 - Handles the special case where `x` is `0` by printing `'0'` and returning early.
-- Converts `x` to hexadecimal representation by recursively dividing it by 16 (`x % 16`).
+- Converts `x` to hexadecimal representation by recursively dividing it by 16 (`x / 16`).
 - Uses `ft_putchar` to print each hexadecimal digit (`base[x % 16]`)
