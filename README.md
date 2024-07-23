@@ -166,7 +166,7 @@ The `printf` function in C and similar programming languages processes its forma
 
 ## Ft_printf.c
 
-### [ft_check_conv](ft_printf.c)
+### [ft_check_conv](src/ft_printf.c)
 
 The `ft_check_conv` function determines the appropriate action based on the format specifier character `c`. It uses the `va_list` to retrieve the corresponding argument and processes it accordingly, updating the total length of the output.
 
@@ -220,7 +220,7 @@ static int	ft_check_conv(char c, va_list *args, int *len, int *i)
 
 <br>
 
-### [ft_printf](ft_printf.c)
+### [ft_printf](src/ft_printf.c)
 
 The `ft_printf` function formats and prints a series of characters and variables according to the format specifiers in the provided format string.
 
@@ -295,7 +295,7 @@ int	ft_printf(char const *str, ...)
 
 Specific functions to make the correct text conversions.
 
-### [ft_putchar](ft_text.c)
+### [ft_putchar](src/ft_text.c)
 
 The `ft_putchar` function is a helper function used to print a single character to the standard output and update the total length of the output.
 
@@ -319,7 +319,7 @@ int	ft_putchar(char ch, int *len)
 
 <br>
 
-### [ft_putstr](ft_text.c)
+### [ft_putstr](src/ft_text.c)
 
 The `ft_putstr` function is a helper function used to print a string to the standard output and update the total length of the output.
 
@@ -362,7 +362,7 @@ int	ft_putstr(char *args, int *len)
 ## Ft_numbers.c
 
 Specific functions to make the correct number conversions.
-### [ft_putnbr](ft_numbers.c)
+### [ft_putnbr](src/ft_numbers.c)
 
 The `ft_putnbr` function is a helper function used to print an integer to the standard output and update the total length of the output.
 
@@ -407,7 +407,7 @@ int	ft_putnbr(int nbr, int *len)
 
 <br>
 
-### [ft_unsigned_int](ft_numbers.c)
+### [ft_unsigned_int](src/ft_numbers.c)
 
 The `ft_unsigned_int` function is a helper function used to print an unsigned integer to the standard output and update the total length of the output.
 
@@ -433,7 +433,7 @@ int	ft_unsigned_int(unsigned int u, int *len)
 
 <br>
 
-### [ft_pointer](ft_numbers.c)
+### [ft_pointer](src/ft_numbers.c)
 
 The `ft_pointer` function is a helper function used to print a pointer address in hexadecimal format to the standard output and update the total length of the output.
 
@@ -481,7 +481,7 @@ int	ft_pointer(size_t ptr, int *len)
 
 <br>
 
-### [ft_hexadecimal](ft_numbers.c)
+### [ft_hexadecimal](src/ft_numbers.c)
 
 The `ft_hexadecimal` function is a helper function used to print an unsigned integer in hexadecimal format to the standard output and update the total length of the output.
 
