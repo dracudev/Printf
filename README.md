@@ -1,3 +1,5 @@
+>**This function is now part of <a href="https://github.com/dracudev/Libft" target="_blank">Libft</a>**
+
 # Ft_Printf - Custom Implementation
 
 Custom implementation of the standard `printf` function, capable of formatting and printing a variety of data types. This project is designed to handle the following conversion specifiers:
