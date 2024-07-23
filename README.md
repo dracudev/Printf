@@ -164,7 +164,7 @@ The `printf` function in C and similar programming languages processes its forma
 
 # Custom Implementation
 
-**`[All functions have write protection]`**
+> **All functions have write protection**
 
 ## Ft_printf.c
 
